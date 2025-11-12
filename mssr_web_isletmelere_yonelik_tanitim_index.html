@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MSSR WEB | İşletmelere Özel Web Siteleri</title>
+  <meta name="description" content="MSSR WEB - İşletmelere özel tek sayfalık web siteleri, kurumsal tanıtım sayfaları ve landing page çözümleri. 1 günde teslim, modern tasarım, SEO uyumu.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="MSSR.png">
+  <style>
+    :root{
+      --bg:#050505;
+      --panel:#0f0f0f;
+      --text:#f5f5f5;
+      --muted:#b5b5b5;
+      --line:#1f1f1f;
+      --accent:#ffffff;
+      --accent-dark:#0b0b0b;
+      --radius:18px;
+      --shadow:0 18px 45px rgba(0,0,0,.55)
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; color:var(--text); background:linear-gradient(140deg,#050505 0%,#0d0d0d 55%,#151515 100%); line-height:1.7}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    .container{width:min(1100px, 92%); margin-inline:auto}
+    header{position:sticky; top:0; z-index:40; backdrop-filter:saturate(1.1) blur(10px); background:rgba(5,5,5,.88); border-bottom:1px solid var(--line)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.9rem 0}
+    .brand{display:flex; align-items:center; gap:.8rem}
+    .logo{width:64px; height:64px; border-radius:14px; object-fit:cover; border:1px solid rgba(255,255,255,.6); box-shadow:0 18px 35px rgba(0,0,0,.55); background:#000; flex-shrink:0}
+    .brand b{font-family:"Playfair Display",serif; font-size:1.02em}
+    .nav a.btn{padding:.55rem .95rem; border:1px solid rgba(255,255,255,.25); border-radius:999px; transition:.25s}
+    .nav a.btn:hover{transform:translateY(-1px); border-color:rgba(255,255,255,.6); color:var(--accent)}
+    .cta{background:var(--accent); color:#050505; font-weight:800}
+
+    .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:2rem; align-items:center; padding:3.8rem 0}
+    .eyebrow{letter-spacing:.28em; text-transform:uppercase; font-size:.8rem; color:#9c9c9c}
+    .hero h1{font-size:clamp(34px,5vw,58px); line-height:1.08; margin:.35rem 0 1rem}
+    .highlight{background:linear-gradient(120deg,#ffffff 10%, #dcdcdc 40%, #ffffff 90%); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .hero p{color:var(--muted); font-size:1.08rem}
+    .cta-row{display:flex; gap:.7rem; flex-wrap:wrap; margin-top:1.1rem}
+
+    section{padding:3.2rem 0}
+    .section-title{font-family:"Playfair Display",serif; font-size:2rem; margin:0 0 .8rem}
+    .muted{color:var(--muted)}
+    .grid{display:grid; gap:1.1rem}
+    .g-2{grid-template-columns:repeat(2,1fr)}
+    .g-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:linear-gradient(180deg, rgba(20,20,20,.85), rgba(10,10,10,.95)); border:1px solid var(--line); border-radius:var(--radius); padding:1.2rem; box-shadow:var(--shadow)}
+    .badge{display:inline-block; padding:.35rem .7rem; border:1px solid rgba(255,255,255,.18); border-radius:999px; font-size:.85rem; color:var(--muted); background:rgba(255,255,255,.04)}
+    .value{display:flex; gap:1rem}
+    .value .icon{width:42px; height:42px; border-radius:12px; display:grid; place-items:center; background:rgba(255,255,255,.05); border:1px solid var(--line)}
+    .price{display:flex; align-items:center; justify-content:space-between; gap:.6rem; margin:.55rem 0; padding:.75rem .9rem; border-radius:14px; background:rgba(255,255,255,.03); border:1px solid var(--line)}
+
+    details{border:1px solid var(--line); background:rgba(0,0,0,.4); border-radius:14px; padding:1rem 1.1rem}
+    details+details{margin-top:.7rem}
+    summary{cursor:pointer; font-weight:700}
+    footer{border-top:1px solid var(--line); padding:2rem 0; color:#e0e0e0}
+
+    @media (max-width: 980px){.hero{grid-template-columns:1fr} .g-3{grid-template-columns:1fr 1fr}}
+    @media (max-width: 640px){.g-2,.g-3{grid-template-columns:1fr} .nav .hide-sm{display:none}}
+
+    .hero-visual{background:linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.01)); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+    .bar{display:flex; gap:.35rem; padding:.55rem; border-bottom:1px solid var(--line); background:rgba(0,0,0,.45)}
+    .dot{width:10px; height:10px; border-radius:999px}
+    .dot.r{background:#f5f5f5}.dot.y{background:#bdbdbd}.dot.g{background:#8f8f8f}
+    .imgwrap{aspect-ratio:16/10; display:grid; place-items:center}
+    .hero-banner{width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.1)}
+
+    .social-card{display:flex; gap:1.8rem; align-items:center; padding:2rem; border-radius:var(--radius); background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(0,0,0,.4)); border:1px solid var(--line); box-shadow:var(--shadow); flex-wrap:wrap}
+    .social-avatar{width:110px; height:110px; border-radius:32px; background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,.2)); border:1px solid rgba(255,255,255,.3); display:flex; align-items:center; justify-content:center; overflow:hidden}
+    .social-avatar img{width:100%; height:100%; object-fit:cover}
+    .stat-row{display:flex; gap:1rem; flex-wrap:wrap}
+    .stat{padding:.8rem 1.2rem; border-radius:14px; border:1px solid rgba(255,255,255,.14); background:rgba(0,0,0,.45)}
+    .stat strong{display:block; font-size:1.4rem}
+    .insta-actions{display:flex; gap:.7rem; flex-wrap:wrap; margin-top:1rem}
+
+    .split{display:flex; justify-content:space-between; gap:2rem; align-items:flex-end; flex-wrap:wrap}
+    .gallery-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:2rem}
+    .gallery-card{position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--line); min-height:220px; box-shadow:var(--shadow)}
+    .gallery-card img{width:100%; height:100%; object-fit:cover; filter:grayscale(.9); transition:transform .4s ease, filter .4s ease}
+    .gallery-card span{position:absolute; inset:auto 1rem 1rem 1rem; background:rgba(0,0,0,.55); padding:.35rem .6rem; border-radius:999px; font-size:.85rem; letter-spacing:.08em}
+    .gallery-card:hover img{transform:scale(1.05); filter:grayscale(.7)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#anasayfa">
+        <img class="logo" src="MSSR.png" alt="MSSR WEB siyah beyaz logo" width="64" height="64">
+        <span><b>MSSR</b> WEB</span>
+      </a>
+      <nav style="display:flex; gap:.6rem; align-items:center">
+        <a class="btn hide-sm" href="#neden">Neden Biz?</a>
+        <a class="btn hide-sm" href="#hizmetler">Hizmetler</a>
+        <a class="btn hide-sm" href="#galeri">Galeri</a>
+        <a class="btn hide-sm" href="#paketler">Paketler</a>
+        <a class="btn" href="#iletisim">İletişim</a>
+        <a class="btn cta" href="https://wa.me/905525400206?text=Merhaba%2C%20web%20sitesi%20hizmetinizle%20ilgileniyorum." target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero container" id="anasayfa">
+    <div>
+      <div class="eyebrow">Antalya • Türkiye</div>
+      <h1><span class="highlight">İşletmelere özel</span> web deneyimleri — <span class="highlight">1 günde yayında</span></h1>
+      <p>Monokrom kimliklere uygun tek sayfalık tanıtım siteleri, kurumsal sayfalar ve satış odaklı landing page çözümleri. Mobil uyumlu, hızlı ve SEO temelli altyapı.</p>
+      <div class="cta-row">
+        <a class="btn cta" href="#paketler">Planları Gör</a>
+        <a class="btn" style="border:1px solid rgba(255,255,255,.25)" href="#iletisim">Teklif Al</a>
+      </div>
+      <p class="muted" style="margin-top:.8rem">Musa Sarı • MSSR WEB • <a href="mailto:mmusa.sr@gmail.com">mmusa.sr@gmail.com</a> • <a href="tel:+905525400206">+90 (552) 540 02 06</a></p>
+      <div class="badge" style="margin-top:.6rem">%100 memnuniyet</div>
+      <div class="badge">Hızlı kurulum</div>
+      <div class="badge">Şablon + özelleştirme</div>
+    </div>
+    <div class="hero-visual">
+      <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+      <div class="imgwrap">
+        <img src="ofis.webp" alt="MSSR WEB ofis çalışma alanı" class="hero-banner" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="container">
+      <div class="split" style="align-items:center">
+        <h2 class="section-title" style="margin:0">Galeri</h2>
+        <div class="cta-row" style="margin:0">
+          <a class="btn" style="border:1px solid rgba(255,255,255,.25)" href="https://www.instagram.com/7musasari/" target="_blank" rel="noopener">Instagram’da Daha Fazlası</a>
+        </div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="antalya.jpg" alt="Antalya şehir ışıkları üzerinde gece manzarası">
+          
+        </div>
+        <div class="gallery-card">
+          <img src="sahil.webp" alt="Siyah beyaz sahil fotoğrafı">
+          
+        </div>
+        <div class="gallery-card">
+          <img src="dogal.jpg" alt="Doğal ışık alan ofis içi">
+          
+        </div>
+        <div class="gallery-card">
+          <img src="manzara.jpg" alt="Şehir manzarası">
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="instagram">
+    <div class="container">
+      <div class="social-card">
+        <div class="social-avatar">
+          <img src="pp.jpg" alt="Musa Sarı Instagram profil fotoğrafı" loading="lazy" width="110" height="110">
+        </div>
+        <div>
+          <p class="muted" style="margin:0 0 .3rem">@7musasari • Instagram</p>
+          <h2 class="section-title" style="margin:0 0 .6rem; font-size:1.8rem">Musa Sarı — Web Designer</h2>
+          <p class="muted" style="max-width:540px">“Web Dev” odağıyla hazırladığım mikro projeleri, UI stillerini ve canlı örnekleri Instagram’da paylaşıyorum. Portföy güncellemeleri ve tasarım notları için beni takip edin.</p>
+          <div class="stat-row" style="margin:1rem 0">
+            <div class="stat"><strong>9</strong><span>Paylaşım</span></div>
+            <div class="stat"><strong>413</strong><span>Takipçi</span></div>
+            <div class="stat"><strong>400</strong><span>Takip</span></div>
+          </div>
+          <div class="insta-actions">
+            <a class="btn cta" href="https://www.instagram.com/7musasari/" target="_blank" rel="noopener">Instagram’da İncele</a>
+            <a class="btn" style="border:1px solid rgba(255,255,255,.28)" href="https://wa.me/905525400206?countryName=TR&amp;countryCode=90&amp;phoneNumber=5525400206" target="_blank" rel="noopener">WhatsApp’a Yaz</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="neden">
+    <div class="container">
+      <h2 class="section-title">Neden MSSR WEB?</h2>
+      <div class="grid g-3">
+        <div class="card value"><span class="icon">⚡</span><div><h3>Hızlı Teslim</h3><p class="muted">Hazır şablon + hızlı özelleştirme yaklaşımıyla çoğu proje <strong>1 günde</strong> yayında.</p></div></div>
+        <div class="card value"><span class="icon">📱</span><div><h3>Mobil Uyumlu</h3><p class="muted">Telefon, tablet ve masaüstünde akıcı görünüm. Hız ve performans odaklı.</p></div></div>
+        <div class="card value"><span class="icon">🔍</span><div><h3>SEO Temelli</h3><p class="muted">Temel SEO etiketleri, hızlı yükleme ve açık meta verilerle arama motorlarına hazır.</p></div></div>
+        <div class="card value"><span class="icon">🎨</span><div><h3>Monokrom Tasarım</h3><p class="muted">Siyah beyaz logolara uygun, net kontrastlı ve zamansız arayüzler.</p></div></div>
+        <div class="card value"><span class="icon">💬</span><div><h3>Kolay İletişim</h3><p class="muted">WhatsApp, telefon ve e-posta CTA’ları tek tıkla erişilebilir.</p></div></div>
+        <div class="card value"><span class="icon">💰</span><div><h3>Uygun Fiyat</h3><p class="muted">Küçük işletmelere özel şeffaf paketler ve revizyon desteği.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hizmetler">
+    <div class="container">
+      <h2 class="section-title">Hizmetler</h2>
+      <div class="grid g-3">
+        <div class="card">
+          <h3>Tek Sayfalık Tanıtım Siteleri</h3>
+          <p class="muted">Kuaför, kafe, butik, güzellik merkezi ve emlak ofisleri için hızlı, şık ve etkili tanıtım sayfaları.</p>
+          <ul class="muted" style="margin:0; padding-left:1.1rem">
+            <li>WhatsApp ve harita entegrasyonu</li>
+            <li>Fiyat listesi / hizmet kartları</li>
+            <li>Galeri ve referans alanı</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Kurumsal Web Sayfaları</h3>
+          <p class="muted">Hakkımızda, hizmet blokları, iletişim ve SSS içeren çok bölümlü kurumsal siteler.</p>
+          <ul class="muted" style="margin:0; padding-left:1.1rem">
+            <li>Kurumsal renk ve tipografi seti</li>
+            <li>Hızlı yükleme, SEO temelleri</li>
+            <li>İçerik düzenleme desteği</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Landing Page (Satış Odaklı)</h3>
+          <p class="muted">Kampanya, ürün veya rezervasyon hedefli dönüşüm sayfaları.</p>
+          <ul class="muted" style="margin:0; padding-left:1.1rem">
+            <li>Güçlü CTA, form/WhatsApp akışı</li>
+            <li>A/B testine uygun bloklar</li>
+            <li>Takip pikseli entegrasyonu (isteğe bağlı)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="surec">
+    <div class="container">
+      <h2 class="section-title">Süreç Nasıl İşler?</h2>
+      <div class="grid g-3">
+        <div class="card"><strong>1) İhtiyaç Analizi</strong><p class="muted">Kısa bir görüşme ile sektör, hedef ve içerik detayları netleştirilir.</p></div>
+        <div class="card"><strong>2) Tasarım &amp; İçerik</strong><p class="muted">Şablon üzerine özel düzenlemeler, metin ve görsellerin yerleşimi.</p></div>
+        <div class="card"><strong>3) Yayına Alma</strong><p class="muted">Dosya teslimi, domain yönlendirme ve temel SEO ayarları yapılır.</p></div>
+      </div>
+      <p class="muted" style="margin-top:1rem">Not: Basit tanıtım siteleri genellikle <strong>1 iş günü</strong> içinde teslim edilir.</p>
+    </div>
+  </section>
+
+  <section id="paketler">
+    <div class="container">
+      <h2 class="section-title">Paketler &amp; Fiyatlandırma</h2>
+      <div class="grid g-3">
+        <div class="card">
+          <h3>Başlangıç</h3>
+          <p class="muted">Tek sayfa — hazır şablon, hızlı teslim.</p>
+          <div class="price"><span>Kurulum &amp; Tasarım</span><strong>₺750</strong></div>
+          <div class="price"><span>WhatsApp + Harita</span><strong>Dahil</strong></div>
+          <div class="price"><span>Temel SEO</span><strong>Dahil</strong></div>
+          <div class="cta-row" style="margin-top:.7rem"><a class="btn cta" href="https://wa.me/905525400206?text=Merhaba%2C%20Başlangıç%20paketi%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">Seç</a></div>
+        </div>
+        <div class="card" style="border-color:rgba(255,255,255,.35)">
+          <h3>Standart</h3>
+          <p class="muted">Gelişmiş içerik + küçük özelleştirmeler.</p>
+          <div class="price"><span>Kurulum &amp; Tasarım</span><strong>₺1.250</strong></div>
+          <div class="price"><span>Galeri / Fiyat Tablosu</span><strong>Dahil</strong></div>
+          <div class="price"><span>Light/Dark Tema (ops.)</span><strong>Dahil</strong></div>
+          <div class="cta-row" style="margin-top:.7rem"><a class="btn cta" href="https://wa.me/905525400206?text=Merhaba%2C%20Standart%20paketi%20ile%20ilerlemek%20istiyorum." target="_blank" rel="noopener">Seç</a></div>
+        </div>
+        <div class="card">
+          <h3>Pro</h3>
+          <p class="muted">Tam kurumsal görünüm + kampanya/landing blokları.</p>
+          <div class="price"><span>Çok Bölümlü Sayfa</span><strong>₺2.000+</strong></div>
+          <div class="price"><span>Özel Renk/Tipografi</span><strong>Dahil</strong></div>
+          <div class="price"><span>Piksel &amp; Analitik</span><strong>Opsiyonel</strong></div>
+          <div class="cta-row" style="margin-top:.7rem"><a class="btn cta" href="https://wa.me/905525400206?text=Merhaba%2C%20Pro%20paketi%20için%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">Teklif Al</a></div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:.8rem">*Fiyatlar örnektir; içerik yoğunluğu ve talebe göre değişebilir.</p>
+    </div>
+  </section>
+
+  <section id="musteri">
+    <div class="container">
+      <h2 class="section-title">Müşteri Odaklı Yaklaşım</h2>
+      <div class="card">
+        <p class="muted">Her projeye işletmenizin hedefleri açısından bakıyoruz: daha fazla telefon araması, WhatsApp mesajı veya mağazaya yönlendirme… Siteniz yalnızca şık görünmekle kalmaz; net bir <strong>çağrı-aksiyon (CTA)</strong> akışı ile dönüşüm sağlar. Teslim sonrası küçük düzenlemeler için destek verilir.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sss">
+    <div class="container">
+      <h2 class="section-title">Sık Sorulan Sorular</h2>
+      <details>
+        <summary>Gerçekten 1 günde teslim mümkün mü?</summary>
+        <p class="muted">Evet. İçerik (logo, metin, iletişim) hızlı sağlanırsa tek sayfalık siteler 1 iş gününde hazırlanıp teslim edilir.</p>
+      </details>
+      <details>
+        <summary>Domain ve hosting’i siz mi sağlıyorsunuz?</summary>
+        <p class="muted">Tercihen müşterinin kendi adına açılır. İsterseniz yönlendirme ve kurulum için adım adım destek veririm.</p>
+      </details>
+      <details>
+        <summary>Sonradan içerik güncellemeleri nasıl olur?</summary>
+        <p class="muted">Küçük metin/düzen değişiklikleri hızlıca yapılır. Geniş kapsamlı revizyonlar için mini paket sunarım.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="iletisim">
+    <div class="container">
+      <h2 class="section-title">İletişim</h2>
+      <div class="grid g-3">
+        <div class="card value"><span class="icon">📞</span><div><strong>Telefon</strong><div><a href="tel:+905525400206">+90 (552) 540 02 06</a></div></div></div>
+        <div class="card value"><span class="icon">💬</span><div><strong>WhatsApp</strong><div><a href="https://wa.me/905525400206?text=Merhaba%2C%20web%20sitesi%20hizmetinizle%20ilgileniyorum." target="_blank" rel="noopener">Mesaj Gönder</a></div></div></div>
+        <div class="card value"><span class="icon">✉️</span><div><strong>E-posta</strong><div><a href="mailto:mmusa.sr@gmail.com">mmusa.sr@gmail.com</a></div></div></div>
+      </div>
+      <p class="muted" style="margin-top:1rem">LinkedIn: <a href="https://www.linkedin.com/in/musa-sar%C4%B1-59548b246" target="_blank" rel="noopener">Profilim</a> • Antalya, Türkiye</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap">
+      <div>© <span id="yil"></span> MSSR WEB • Musa Sarı</div>
+      <div class="muted">Hızlı teslim • Monokrom tasarım • Dönüşüm odaklı</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yil').textContent = new Date().getFullYear();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "MSSR WEB",
+    "areaServed": "TR",
+    "address": {"@type":"PostalAddress","addressLocality":"Antalya","addressCountry":"TR"},
+    "telephone": "+905525400206",
+    "email": "mmusa.sr@gmail.com",
+    "url": "https://ornek.site/mssr-web",
+    "sameAs": ["https://www.linkedin.com/in/musa-sar%C4%B1-59548b246"],
+    "description": "MSSR WEB - İşletmelere özel tek sayfalık web siteleri, kurumsal sayfalar ve landing page çözümleri."
+  }
+  </script>
+</body>
+</html>
